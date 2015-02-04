@@ -43,6 +43,7 @@ import java.lang.reflect.*;
 import java.util.jar.Attributes;
 import java.util.jar.Manifest;
 import java.util.*;
+
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.UIManager.*;
@@ -365,7 +366,7 @@ public class VncViewer extends javax.swing.JApplet
         build = attributes.getValue("Build");
         buildDate = attributes.getValue("Package-Date");
         buildTime = attributes.getValue("Package-Time");
-      } catch (java.io.IOException e) { }
+      } catch (java.lang.Exception e) { }
     }
   }
 

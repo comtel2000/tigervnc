@@ -19,12 +19,14 @@
 
 package com.tigervnc.rfb;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-import com.tigervnc.network.*;
-import com.tigervnc.rdr.*;
+import com.tigervnc.rdr.InStream;
+import com.tigervnc.rdr.OutStream;
 
-abstract public class CConnection extends CMsgHandler {
+abstract public class CConnection extends CMsgHandler implements UserPasswdGetter {
 
   public CConnection()
   {

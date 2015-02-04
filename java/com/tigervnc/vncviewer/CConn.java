@@ -768,8 +768,9 @@ public class CConn extends CConnection implements
 
   void showMenu(int x, int y) {
     String os = System.getProperty("os.name");
-    if (os.startsWith("Windows"))
-      com.sun.java.swing.plaf.windows.WindowsLookAndFeel.setMnemonicHidden(false);
+    if (os.startsWith("Windows")){
+	//com.sun.java.swing.plaf.windows.WindowsLookAndFeel.setMnemonicHidden(false);
+    }
     menu.show(desktop, x, y);
   }
 

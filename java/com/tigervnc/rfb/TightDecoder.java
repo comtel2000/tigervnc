@@ -23,10 +23,6 @@ package com.tigervnc.rfb;
 
 import com.tigervnc.rdr.InStream;
 import com.tigervnc.rdr.ZlibInStream;
-import java.util.ArrayList;
-import java.io.InputStream;
-import java.awt.image.*;
-import java.awt.*;
 
 public class TightDecoder extends Decoder {
 
@@ -43,8 +39,6 @@ public class TightDecoder extends Decoder {
   final static int rfbTightFilterPalette = 0x01;
   final static int rfbTightFilterGradient = 0x02;
   final static int rfbTightMinToCompress = 12;
-
-  final static Toolkit tk = Toolkit.getDefaultToolkit();
 
   public TightDecoder(CMsgReader reader_) {
     reader = reader_;
@@ -250,10 +244,9 @@ public class TightDecoder extends Decoder {
     is.readBytes(netbuf, 0, compressedLen);
 
     // Create an Image object from the JPEG data.
-    Image jpeg = tk.createImage(netbuf);
-    jpeg.setAccelerationPriority(1);
-    handler.imageRect(r, jpeg);
-    jpeg.flush();
+    // change to byte[] transfer
+    handler.imageRect(r, netbuf);
+
   }
 
   final private void FilterGradient24(byte[] netbuf, int[] buf, int stride,

@@ -81,8 +81,9 @@ public class BIPixelBuffer extends PlatformPixelBuffer implements ImageObserver
   }
 
   public void imageRect(int x, int y, int w, int h, Object pix) {
-    if (pix instanceof Image) {
-      Image img = (Image)pix;
+    if (pix instanceof byte[]) {
+      Image img = tk.createImage((byte[]) pix);
+      img.setAccelerationPriority(1);
       clip = new Rectangle(x, y, w, h);
       synchronized(clip) {
         tk.prepareImage(img, -1, -1, this);
@@ -136,6 +137,7 @@ public class BIPixelBuffer extends PlatformPixelBuffer implements ImageObserver
   BufferedImage image;
   DataBuffer db;
   Rectangle clip;
-
+  final static Toolkit tk = Toolkit.getDefaultToolkit();
+  
   static LogWriter vlog = new LogWriter("BIPixelBuffer");
 }
